@@ -1,9 +1,9 @@
 const express = require('express');
-const database = require('./database/db');
+const createTables = require("./models/createTables");
 const app = express();
 
 const port = 3000;
-database()
+createTables();
 
 app.listen(port, () =>
     console.log('Example app listening on port 3000!'),
