@@ -7,7 +7,7 @@ const createRoleTable = async () => {
         type VARCHAR(10) NOT NULL
     )`;
 
-    const type1 = `INSERT OR REPLACE INTO roles(id, type) VALUES (1, 'USER')`;
+    const type1 = `INSERT OR REPLACE INTO roles(id, type) VALUES (1, 'CUSTOMER')`;
     const type2 = `INSERT OR REPLACE INTO roles(id, type) VALUES (2, 'ADMIN')`;
 
     try {
