@@ -39,6 +39,14 @@ exports.loginService = async (body) => {
     return body
 }
 
-exports.checkInService = async (type, role) => {
-    return type === 'CUSTOMER' && role === 1 ? 'Hello World Customer' : 'Hello World ADMIN';
+exports.checkInService = async (type, userData) => {
+    const data = await userRepo.signUpEmailCheckRepo(userData);
+    if (data[0].roleId === 1 && type === 'CUSTOMER') {
+        return 'Hello World Customer'
+    } else if (data[0].roleId === 2 && type === 'ADMIN') {
+        return 'Hello World ADMIN'
+    } else {
+        throw new Error('Invalide token or type')
+    }
+
 }

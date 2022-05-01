@@ -35,9 +35,8 @@ exports.loginController = async (req, res, next) => {
 exports.checkInController = async (req, res, next) => {
     try {
         const type = req.query.type;
-        const role = req.user.role
-        const data = await userService.checkInService(type, role);
-
+        const userData = req.user
+        const data = await userService.checkInService(type, userData);
         msg.message = "success"
         msg.data = data
         res.status(200).json(msg);
