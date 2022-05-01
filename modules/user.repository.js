@@ -1,7 +1,7 @@
 const connection = require('../database/db');
 
 exports.signUpEmailCheckRepo = async (requestBody) => {
-    const sql = `SELECT email from users where email= ?`
+    const sql = `SELECT * from users where email= ?`
 
     return new Promise((resolve, reject) => {
         connection.all(sql, [requestBody.email], (err, rows) => {

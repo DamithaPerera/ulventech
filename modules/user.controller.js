@@ -18,3 +18,21 @@ exports.signUpController = async (req, res, next) => {
         res.status(400).json(msg);
     }
 }
+
+exports.loginController = async (req, res, next) => {
+    try {
+        const body = req.body;
+        const data = await userService.loginService(body);
+        const msg = {
+            'message': 'success',
+            'data': data
+        }
+        res.status(201).json(msg);
+    } catch (err) {
+        const msg = {
+            'message': 'fail',
+            'data': err.message
+        }
+        res.status(400).json(msg);
+    }
+}
