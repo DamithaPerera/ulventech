@@ -5,8 +5,16 @@ exports.signUpController = async (req, res, next) => {
     try {
         const requestBody = req.body;
         const data = await userService.signUpService(requestBody);
-        res.status(200).json('success');
-    } catch (e) {
-
+        const msg = {
+            'message': 'success',
+            'data': data
+        }
+        res.status(201).json(msg);
+    } catch (err) {
+        const msg = {
+            'message': 'fail',
+            'data': err.message
+        }
+        res.status(400).json(msg);
     }
 }
