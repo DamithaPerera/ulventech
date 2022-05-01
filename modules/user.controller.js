@@ -36,3 +36,22 @@ exports.loginController = async (req, res, next) => {
         res.status(400).json(msg);
     }
 }
+
+exports.checkInController = async (req, res, next) => {
+    try {
+        const type = req.query.type;
+        const role = req.user.role
+        const data = await userService.checkInService(type, role);
+        const msg = {
+            'message': 'success',
+            'data': data
+        }
+        res.status(201).json(msg);
+    } catch (err) {
+        const msg = {
+            'message': 'fail',
+            'data': err.message
+        }
+        res.status(400).json(msg);
+    }
+}

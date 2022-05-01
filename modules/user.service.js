@@ -15,6 +15,7 @@ exports.signUpService = async (requestBody) => {
     requestBody.password = await bcrypt.hash(requestBody.password, 10)
     await userRepo.signUpRepo(requestBody)
     delete requestBody.password
+    delete requestBody.accessToken
     return requestBody
 
 }
@@ -36,5 +37,8 @@ exports.loginService = async (body) => {
     body.accessToken = util.generateAccessToken(user)
     delete body.password
     return body
+}
 
+exports.checkInService = async (type, role) => {
+    return type === 'CUSTOMER' && role === 1 ? 'Hello World Customer' : 'Hello World ADMIN';
 }
