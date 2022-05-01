@@ -24,7 +24,7 @@ exports.loginController = async (req, res, next) => {
 
         msg.message = "success"
         msg.data = data
-        res.status(201).json(msg);
+        res.status(200).json(msg);
     } catch (err) {
         msg.message = "fail"
         msg.data = err.message
@@ -40,7 +40,7 @@ exports.checkInController = async (req, res, next) => {
 
         msg.message = "success"
         msg.data = data
-        res.status(201).json(msg);
+        res.status(200).json(msg);
     } catch (err) {
         msg.message = "fail"
         msg.data = err.message
